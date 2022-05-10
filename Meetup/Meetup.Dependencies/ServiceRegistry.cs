@@ -1,4 +1,6 @@
-﻿using Meetup.Data;
+﻿using Meetup.Business.Services;
+using Meetup.Business.Services.Interfaces;
+using Meetup.Data;
 using Meetup.Data.Repositories;
 using Meetup.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +20,11 @@ namespace Meetup.Dependencies
             });
 
             services.AddScoped<IEventRepository, EventRepository>();
+        }
+
+        public static void AddBusinessLogic(this IServiceCollection services)
+        {
+            services.AddScoped<IEventService, EventService>();
         }
     }
 }

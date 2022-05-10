@@ -38,16 +38,12 @@ namespace Meetup.Data.Repositories
 
         public async Task<IEnumerable<Event>> GetAll()
         {
-            var events = await context.Events.ToListAsync();
-
-            return events;
+            return await context.Events.ToListAsync();
         }
 
         public async Task<Event?> GetById(int id)
         {
-            var @event = await context.Events.FindAsync(id);
-
-            return @event;
+            return await context.Events.FindAsync(id);
         }
 
         public async Task Update(Event entity)
