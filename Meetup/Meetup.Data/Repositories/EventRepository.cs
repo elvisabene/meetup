@@ -25,7 +25,7 @@ namespace Meetup.Data.Repositories
         {
             var eventToDelete = await context.Events.FindAsync(id);
 
-            if (eventToDelete == null)
+            if (eventToDelete is null)
             {
                 return false;
             }
@@ -46,10 +46,12 @@ namespace Meetup.Data.Repositories
             return await context.Events.FindAsync(id);
         }
 
-        public async Task Update(Event entity)
+        public async Task<Event> Update(Event @event)
         {
-            context.Events.Update(entity);
+            context.Events.Update(@event);
             await context.SaveChangesAsync();
+
+            return @event;
         }
     }
 }

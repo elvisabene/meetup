@@ -33,9 +33,9 @@ namespace Meetup.Business.Services
             return await eventRepository.GetById(id);
         }
 
-        public async Task Update(Event @event)
+        public async Task<Event> Update(Event @event)
         {
-            await eventRepository.Update(@event);
+            return await eventRepository.Update(@event);
         }
     }
 }
